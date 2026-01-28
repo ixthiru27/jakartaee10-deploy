@@ -11,7 +11,7 @@ pipeline {
         APP_CONTEXT_PATH = '/jakarta-app'
         
     
-        TOMCAT_CREDS = credentials('tomcat-deployer')
+        TOMCAT_CREDS = credentials('tomcat-credentials')
     }
 
     stages {
