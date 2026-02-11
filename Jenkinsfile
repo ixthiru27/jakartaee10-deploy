@@ -5,7 +5,7 @@ pipeline {
 
         
         maven 'local_maven' 
-        jdk 'java21'
+        jdk 'java25'
     }
 
     environment {
