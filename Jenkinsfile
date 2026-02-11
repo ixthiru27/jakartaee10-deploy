@@ -33,7 +33,7 @@ pipeline {
                 script {
                     echo "Deploying to ${TOMCAT_URL}..."
 
-                    bat """
+                    sh """
                         curl -v -T "${WAR_FILE}" ^
                         "${TOMCAT_URL}/manager/text/deploy?path=${APP_CONTEXT_PATH}&update=true" ^
                         --user "${TOMCAT_CREDS_USR}:${TOMCAT_CREDS_PSW}"
