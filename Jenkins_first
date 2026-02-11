@@ -20,7 +20,14 @@ pipeline {
                 checkout scm
             }
         }
+        stage('Build') {
+            steps {
+                echo 'Building on Windows...'
+                bat 'mvn clean package -DskipTests'
+            }
+        }
    }
+
 }
         
 
