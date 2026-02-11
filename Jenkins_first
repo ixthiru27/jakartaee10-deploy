@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+
+    tools {
+        maven 'local_maven'
+        jdk 'java25'
+    }
+
+    environment {
+        TOMCAT_URL = 'http://localhost:8080'
+        APP_CONTEXT_PATH = '/jakarta-app'
+        TOMCAT_CREDS = credentials('tomcat-credentials')
+        WAR_FILE = 'target/jakartaee10-starter-boilerplate.war'
+    }
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+   }
+}
+        
+
+        
+
