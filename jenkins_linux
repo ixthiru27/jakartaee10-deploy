@@ -2,7 +2,7 @@
 
     tools {
         maven 'local_maven'
-        jdk 'java25'
+        jdk 'java21'
     }
 
     environment {
