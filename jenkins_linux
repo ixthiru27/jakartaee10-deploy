@@ -1,0 +1,44 @@
+pipeline {
+    agent any
+
+    tools {
+        maven 'local_maven'
+        jdk 'java25'
+    }
+
+    environment {
+        TOMCAT_WEBAPPS = "/root/apache-tomcat-9.0.115/webapps"
+    }
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'mvn clean package -DskipTests'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                sh '''
+                cp target/jakartaee10-starter-boilerplate.war $TOMCAT_WEBAPPS
+                '''
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Deployment Successful!'
+        }
+        failure {
+            echo 'Build or Deployment Failed!'
+        }
+    }
+}
