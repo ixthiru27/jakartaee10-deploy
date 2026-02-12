@@ -21,12 +21,13 @@ pipeline {
         }
 
         stage('Deploy') {
-            steps {
-                bat """
-                    copy /Y target\\jakartaee10-starter-boilerplate.war "C:\Program Files\Apache Software Foundation\Tomcat 11.0\webapps"
-                """
-            }
-        }
+    steps {
+        bat """
+            copy /Y target/jakartaee10-starter-boilerplate.war "C:/Program Files/Apache Software Foundation/Tomcat 11.0/webapps/"
+        """
+    }
+}
+
     }
 
     post {
