@@ -1,4 +1,3 @@
-pipeline {
     agent any
 
     tools {
@@ -17,28 +16,5 @@ pipeline {
                 checkout scm
             }
         }
-
-        stage('Build') {
-            steps {
-                sh 'mvn clean package -DskipTests'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                sh '''
-                cp target/jakartaee10-starter-boilerplate.war $TOMCAT_WEBAPPS
-                '''
-            }
-        }
-    }
-
-    post {
-        success {
-            echo 'Deployment Successful!'
-        }
-        failure {
-            echo 'Build or Deployment Failed!'
-        }
-    }
 }
+
