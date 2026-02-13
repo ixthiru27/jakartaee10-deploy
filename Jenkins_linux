@@ -23,7 +23,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
-                scp target/jakartaee10-starter-boilerplate.war /root/tomcat/webapps/
+                cp target/jakartaee10-starter-boilerplate.war /root/tomcat/webapps/
                 '''
             }
         }
