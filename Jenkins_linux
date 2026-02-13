@@ -1,21 +1,29 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'local_maven'
+        jdk 'java21'
+    }
+
     stages {
+
         stage('Checkout') {
             steps {
                 checkout scm
             }
         }
-stage('Build') {
+
+        stage('Build') {
             steps {
-                bat 'mvn clean package -DskipTests'
+                sh 'mvn clean package -DskipTests'
             }
         }
-stage('Deploy') {
+
+        stage('Deploy') {
             steps {
-                bat '''
-                copy /Y target\\jakartaee10-starter-boilerplate.war "C:\\Program Files\\Apache Software Foundation\\Tomcat 11.0\\webapps\\"
+                sh '''
+                cp target/jakartaee10-starter-boilerplate.war /opt/tomcat/webapps/
                 '''
             }
         }
